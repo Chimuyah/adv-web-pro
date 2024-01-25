@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News API Demo</title>
+    <link rel="stylesheet" href="api.css">
+</head>
+<body>
+    <h1>News</h1>
+    <div id="app">
+        <div id="news-container">
+            <div v-for="article in articles" :key="article.title">
+                <h2>{{ article.title }}</h2>
+                <p>{{ article.description }}</p>
+                <a :href="article.url" target="_blank">Read more</a>
+            </div>
+        </div>
+        <div v-if="loading">Loading...</div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const apiKey = '04bdffc924ff7ffef6732395a4a214a8';
+
+            new Vue({
+                el: '#app',
+                data: {
+                    articles: [],
+                    loading: true,
+                },
+                methods: {
+                    async fetchNews() {
+                        try {
+                            const response = await fetch(`https://gnews.io/api/v4/top-headlines?category=general&lang=en&country=th&max=10&apikey=${apiKey}`);
+                            const data = await response.json();
+                            this.articles = data.articles;
+                        } catch (error) {
+                            console.error('Error fetching news:', error);
+                        } finally {
+                            this.loading = false;
+                        }
+                    },
+                },
+                mounted() {
+                    this.fetchNews();
+                },
+            });
+        });
+    </script>
+</body>
+</html>
