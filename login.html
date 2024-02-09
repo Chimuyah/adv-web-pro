@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .background-container {
+      height: 400px;
+      background-image: url('background.png');
+      background-size: cover;
+      position: relative;
+    }
+
+    .light-1 {
+      position: absolute;
+      left: 30px;
+      width: 80px;
+      height: 200px;
+    }
+
+    .light-2 {
+      position: absolute;
+      left: 140px;
+      width: 80px;
+      height: 150px;
+    }
+
+    .clock {
+      position: absolute;
+      right: 40px;
+      top: 40px;
+      width: 80px;
+      height: 150px;
+    }
+
+    .login-text {
+      position: absolute;
+      margin-top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+    }
+
+    .login-form {
+      padding: 30px;
+    }
+
+    .input-container {
+      padding: 5px;
+      background-color: white;
+      border-radius: 10px;
+      border: 1px solid rgba(143, 148, 251, 1);
+      box-shadow: 0 10px 20px rgba(143, 148, 251, 0.2);
+      margin-bottom: 30px;
+    }
+
+    .input-container input {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-bottom: 1px solid rgba(143, 148, 251, 1);
+      outline: none;
+    }
+
+    .input-container input::placeholder {
+      color: grey;
+    }
+
+    .login-button {
+      height: 50px;
+      border-radius: 10px;
+      background: linear-gradient(rgba(143, 148, 251, 1), rgba(143, 148, 251, 0.6));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .login-button-text {
+      color: white;
+      font-weight: bold;
+    }
+
+    .forgot-password {
+      color: rgba(143, 148, 251, 1);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background-container">
+    <div class="light-1" style="animation: fadeInUp 1s;">
+      <img src="light-1.png" alt="Light 1">
+    </div>
+    <div class="light-2" style="animation: fadeInUp 1.2s;">
+      <img src="light-2.png" alt="Light 2">
+    </div>
+    <div class="clock" style="animation: fadeInUp 1.3s;">
+      <img src="clock.png" alt="Clock">
+    </div>
+    <div class="login-text" style="animation: fadeInUp 1.6s;">Login</div>
+  </div>
+  <div class="login-form" style="animation: fadeInUp 1.8s;">
+    <div class="input-container">
+      <input type="text" placeholder="Email or Phone number">
+    </div>
+    <div class="input-container">
+      <input type="password" placeholder="Password">
+    </div>
+    <div class="login-button" onclick="location.href='termgame.html';">
+      <span class="login-button-text">Login</span>
+    </div>
+    <div style="height: 70px;"></div>
+    <div class="forgot-password">Forgot Password?</div>
+  </div>
+</body>
+
+</html>

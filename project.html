@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TermGame</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="logo1.avif" alt="Logo">
+        </div>
+        <div class="navbar-text">
+            <p>TermGame</p>
+        </div>
+    </nav>
+    <div id="app">
+        <div class="slideshow">
+            <div class="slide" v-for="(image, index) in items" :key="index" v-bind:class="{active: index === currentIndex}">
+                <img :src="image.url" :alt="image.alt">
+            </div>
+        </div>
+        <h3 style="text-align: center;">เลือกเกมที่จะเติม</h3>
+        <div class="container">
+            <div class="row">
+                <div class="game"  v-for="item in items" :key="index">
+                    <img :src="item.url" :alt="item.alt">
+                    <p class="game-name">{{item.name}}</p>
+                </div>
+                
+
+            </div>
+            <div class="contact">
+                <p>ติดต่อสอบถามเพิ่มได้ที่</p>
+                <p>ninlawan@gmail.com</p>
+                <p>FB: นิลวรรณ ชมชื่น</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const { createApp, ref } = Vue
+        createApp({
+            data() {
+                return {
+                    items: [
+                        { url: 'https://www.game-ded.com/wordpress/wp-content/uploads/2017/05/pbm1.jpg', alt: 'Image 1' ,name:'Point Bank'},
+                        { url: 'https://uploads-ssl.webflow.com/5fd48c67bfe96103e696a791/625474b0121d854546d5e419_Garena-Free-Fire.jpeg', alt: 'Image 2' ,name:'Free Fire'},
+                        { url: 'https://www.utun.net/wp-content/uploads/2020/10/%E0%B9%80%E0%B8%81%E0%B8%A1-Rov-1170x658.jpg', alt: 'Image 3',name:'Rov' },
+                       { url: 'https://i.pinimg.com/originals/d1/b1/1d/d1b11d5e4dbae547ac0d651476cec488.png', alt: 'Image 4',name:'LoL' }
+                    ],
+                    currentIndex: 0,
+                }
+            },
+            created() {
+                setInterval(() => {
+                    this.nextSlide();
+                }, 2000);
+            },
+            methods: {
+                nextSlide() {
+                    this.currentIndex++;
+                    if (this.currentIndex >= this.items.length) {
+                        this.currentIndex = 0;
+                    }
+                }
+            }
+        }).mount('#app')
+
+    </script>
+</body>
+
+</html>
